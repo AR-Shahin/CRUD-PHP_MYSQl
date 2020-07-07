@@ -1,4 +1,5 @@
 <?php
+session_start();
 $conn = mysqli_connect('localhost','root','','crud');
 $sql = "SELECT * FROM `data`";
 $data = mysqli_query($conn,$sql);
@@ -26,6 +27,25 @@ $data = mysqli_query($conn,$sql);
                 </div>
                 <div class="col-10">
                     <h2>User List</h2>
+                  <?php  if(isset($_SESSION['success'])){ ?>
+    
+
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                      <strong>Insert</strong> Sucessfully!
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <?php }?>
+                    
+                    <?php if(isset($_SESSION['error'])){?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                      <strong>Delete</strong> Sucessfully!
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                   <?php }?>
                     <hr>
                     <table class="table table-striped">
                       <thead>
@@ -95,3 +115,7 @@ $data = mysqli_query($conn,$sql);
       }
     </style>
 </html>
+
+
+<?php unset($_SESSION['success']);
+unset($_SESSION['error']);?>

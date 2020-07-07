@@ -5,6 +5,7 @@
          $data = htmlspecialchars($data);
          return $data;
      }
+session_start();
 if(isset($_POST["btn"])) {
        
     $name = $_POST['userName'];
@@ -22,10 +23,12 @@ if(isset($_POST["btn"])) {
 $con = mysqli_connect('localhost','root','','crud');
 $sql ="INSERT INTO data VALUES(NULL,'$name','$email','$dob','$phone','$city')";
 if(mysqli_query($con,$sql)){
+    $_SESSION['success'] = 1;
     header("location:index.php");
 }
     else{
-        echo 'no';
+        $_SESSION['error'] = 1;
+        header("location:insert.php");
     }
     
 } else {    

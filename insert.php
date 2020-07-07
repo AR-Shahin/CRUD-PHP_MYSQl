@@ -1,3 +1,6 @@
+
+<?php session_start();?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -20,6 +23,14 @@
                 </div>
                 <div class="col-10">
                     <h2>Insert User Data</h2>
+                  <?php  if(isset($_SESSION['error'])){ ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <strong>Something is wrong : &rpar;</strong> Please try again!
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                   <?php }?>
                     <hr>
                     
                     <form action="insertData.php" method ="post">
@@ -71,3 +82,6 @@
       }
     </style>
 </html>
+
+
+<?php unset($_SESSION['error']) ?>
