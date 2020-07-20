@@ -46,6 +46,14 @@ $data = mysqli_query($conn,$sql);
                       </button>
                     </div>
                    <?php }?>
+                    <?php if(isset($_SESSION['update'])){?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                      <strong>Updated</strong> Sucessfully!
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                   <?php }?>
                     <hr>
                     <table class="table table-striped">
                       <thead>
@@ -117,5 +125,7 @@ $data = mysqli_query($conn,$sql);
 </html>
 
 
-<?php unset($_SESSION['success']);
-unset($_SESSION['error']);?>
+<?php 
+unset($_SESSION['success']);
+unset($_SESSION['error']);
+unset($_SESSION['update']);?>

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $id = $_GET['id'];
  function dataFilter($data){
          $data = trim($data);
@@ -21,6 +21,7 @@ $connect = mysqli_connect('localhost', 'root','','crud');
 $sql = "UPDATE data SET name = '$name',email = '$email',dob = '$dob',phone = '$phone',city = '$city' WHERE id = $id";
 if(mysqli_query($connect,$sql))
 {
+    $_SESSION['update'] = 1;
     header("location:index.php");
 }else{
     echo 'Not edited';
